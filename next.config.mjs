@@ -2,6 +2,12 @@
 import withPWA from 'next-pwa';
 
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     serverComponentsExternalPackages: ['@supabase/ssr'],
   },

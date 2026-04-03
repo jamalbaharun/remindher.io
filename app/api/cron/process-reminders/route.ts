@@ -3,10 +3,12 @@ import { createClient } from '@/lib/supabase/server'
 import { getDaysLeft } from '@/lib/utils'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const REMINDER_DAYS = [30, 14, 7, 3, 2, 1]
 
 export async function GET(req: NextRequest) {
+  // Instantiate inside handler — avoids build-time crash when env vars aren't set
+  const resend = new Resend(process.env.RESEND_API_KEY)
+
   if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
