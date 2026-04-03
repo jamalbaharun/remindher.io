@@ -3,6 +3,9 @@ import { createClient } from '@/lib/supabase/server'
 import { getDaysLeft } from '@/lib/utils'
 import { Resend } from 'resend'
 
+// Force dynamic: prevent Next.js from prerendering this route at build time
+export const dynamic = 'force-dynamic'
+
 const REMINDER_DAYS = [30, 14, 7, 3, 2, 1]
 
 export async function GET(req: NextRequest) {

@@ -3,6 +3,8 @@ import { createClient } from '@/lib/supabase/server'
 import { sanitizeText } from '@/lib/utils'
 import { z } from 'zod'
 
+export const dynamic = 'force-dynamic'
+
 const Schema = z.object({
   subject: z.string().min(1).max(255),
   expiry_date: z.string().regex(/^\d{4}-\d{2}-\d{2}/),
