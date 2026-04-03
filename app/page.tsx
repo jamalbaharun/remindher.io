@@ -44,7 +44,13 @@ export default function HookPage() {
     if (!clean || !expiryDate || !email) { setError(t.errorFill); return }
     setLoading(true)
     const supabase = createClient()
-    const { error: otpError } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } })
+    const { error: otpError } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: true,
+        // No emailRedirectTo = Supabase sends 6-digit OTP code, not magic link
+      },
+    })
     if (otpError) { setError(otpError.message); setLoading(false); return }
     sessionStorage.setItem('pendingReminder', JSON.stringify({ subject: clean, expiryDate }))
     router.push(`/otp?email=${encodeURIComponent(email)}`)
