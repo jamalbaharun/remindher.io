@@ -1,7 +1,11 @@
-
 {
-  "buildCommand": "pnpm install --no-frozen-lockfile && pnpm run build",
-  "devCommand": "pnpm dev",
-  "installCommand": "pnpm install --no-frozen-lockfile",
-  "outputDirectory": ".next"
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "crons": [
+    {
+      "path": "/api/cron/process-reminders",
+      "schedule": "0 1 * * *"
+    }
+  ]
 }
