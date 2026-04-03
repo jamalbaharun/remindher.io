@@ -1,40 +1,25 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata: Metadata = {
-  title: "RemindHer.io",
-  description: "Smart reminders for women's health & wellness",
-  manifest: '/manifest.json',
-  themeColor: '#ec4899',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'RemindHer',
-  },
+  title: "RemindHer.io — The Pulse of Digital Memory",
+  description: "Never miss an expiring document. Smart reminders for HR & Admins.",
+  manifest: "/manifest.json",
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "RemindHer" },
+  icons: { apple: "/icons/icon-192x192.png" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#af25fe",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="min-h-screen bg-obsidian text-white antialiased">
         {children}
       </body>
     </html>

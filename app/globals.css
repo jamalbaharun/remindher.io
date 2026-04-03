@@ -2,26 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-obsidian: #0F172A;
+  --neon-purple: #BF00FF;
+  --neon-purple-dim: #d692ff;
+  --neon-cyan: #00FFFF;
+  --neon-red: #ff3b5c;
+  --surface-mid: #1E293B;
+  --surface-highest: #253348;
+  --on-surface-variant: #94A3B8;
+  --outline-dim: #334155;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-obsidian);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
+
+/* Modal backdrop */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+/* Input neon focus */
+.input-neon {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.input-neon:focus {
+  border-color: rgba(175, 37, 254, 0.5);
+  box-shadow: 0 0 0 2px rgba(175, 37, 254, 0.12);
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, #d692ff, #af25fe);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:active { transform: scale(0.98); }
+
+/* Ghost button */
+.btn-ghost {
+  background: rgba(255,255,255,0.05);
+  color: var(--on-surface-variant);
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 40px rgba(175, 37, 254, 0.08);
+}
+
+/* Neon cyan glow on inputs */
+.shadow-neon-cyan { box-shadow: 0 0 8px rgba(0,251,251,0.3); }
+.shadow-neon-red   { box-shadow: 0 0 8px rgba(255,59,92,0.3); }
+
+/* Color scheme for date pickers */
+input[type="date"] { color-scheme: dark; }
